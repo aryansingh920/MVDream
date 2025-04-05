@@ -1,3 +1,13 @@
+"""
+Created on 05/04/2025
+
+@author: Aryan
+
+Filename: ddim.py
+
+Relative Path: mvdream/ldm/models/diffusion/ddim.py
+"""
+
 """SAMPLING ONLY."""
 
 import torch
@@ -17,8 +27,9 @@ class DDIMSampler(object):
 
     def register_buffer(self, name, attr):
         if type(attr) == torch.Tensor:
-            if attr.device != torch.device("cuda"):
-                attr = attr.to(torch.device("cuda"))
+            # Use the model's device instead of hardcoding cuda
+            if attr.device != self.model.device:
+                attr = attr.to(self.model.device)
         setattr(self, name, attr)
 
     def make_schedule(self, ddim_num_steps, ddim_discretize="uniform", ddim_eta=0., verbose=True):

@@ -40,6 +40,9 @@ You can simply generate multi-view images by running the following command:
 
 ``` bash
 python scripts/t2i.py --text "an astronaut riding a horse"
+
+
+python scripts/t2i.py --text "A multi-view of the glowing, grid-like virtual world of TRON, showing neon-lit streets, towering digital structures, and glowing avatars. The world is viewed from the front, side, and top angles, capturing the vastness and depth of the digital landscape." --device cpu --patch_attention --disable_xformers
 ```
 We also provide a gradio script to try out with GUI:
 
